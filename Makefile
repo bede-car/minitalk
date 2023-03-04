@@ -6,7 +6,7 @@
 #    By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/01 19:57:26 by bede-car          #+#    #+#              #
-#    Updated: 2023/03/04 12:35:18 by bede-car         ###   ########.fr        #
+#    Updated: 2023/03/04 16:10:20 by bede-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,15 @@ PATH_BONUS		=	./bonus/
 #--------------> client <----------------#
 NAME_CLIENT		=	client
 
-SOURCE_CLIENT 	= 	client.c
+SOURCE_CLIENT 	= 	client.c\
+					erros.c
 OBJS_CLIENT		=	$(addprefix $(PATH_MANDATORY), $(SOURCE_CLIENT:.c=.o)) 
 
 #--------------> server <----------------#
-NAME_SERVER		=	server
+NAME_SERVER		=	server 
 
-SOURCE_SERVER 	=	server.c
+SOURCE_SERVER 	=	server.c\
+					erros.c
 OBJS_SERVER		=	$(addprefix $(PATH_MANDATORY), $(SOURCE_SERVER:.c=.o)) 
  
 
