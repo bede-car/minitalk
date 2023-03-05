@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:06:22 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/04 16:11:23 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:45:25 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct s_minitalk
 
 //--------------> Functions <----------------//
 void	input_server_validation(int argc, char **argv);
-void	input_client_validation(int argc, char **argv);
+void	input_client_validation(int argc, char **argv, t_data client);
 
 #endif
