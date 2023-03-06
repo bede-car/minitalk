@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 02:32:23 by bede-car          #+#    #+#             */
-/*   Updated: 2022/06/11 20:05:42 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/05 18:31:08 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_atoi(const char *nptr)
 	n = 0;
 	i = 0;
 	s = 1;
+	if (nptr == NULL)
+		return (0);
 	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t' \
 	|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
