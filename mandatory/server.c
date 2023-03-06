@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:33 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 08:42:20 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:15:34 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,15 @@ int	main(int argc, char **argv)
 	ft_printf("\n>> Ok let's talk! <<\n");
 	ft_printf("Here is the PID: %d (use it to send a message) \n\n", server.pid);
 	if (sigaction(SIGUSR1, &server_action, NULL))
+	{
 		ft_printf("Failed to use sigaction on signal SIGUSR1.\n");
+		exit(SUCCESS);
+	}
 	if (sigaction(SIGUSR2, &server_action, NULL))
+	{
 		ft_printf("Failed to use sigaction on signal SIGUSR2.\n");
+		exit(SUCCESS);
+	}
 	while (1)
 		pause();
 	return (SUCCESS);

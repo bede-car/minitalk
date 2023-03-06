@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:31 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 08:47:04 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:16:25 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,15 @@ int	main(int argc, char **argv)
 	client_action.sa_sigaction = signal_sender;
 	input_client_validation(argc, argv, &client);
 	if (sigaction(SIGUSR1, &client_action, NULL))
+	{
 		ft_printf("Failed to use sigaction on signal SIGUSR1.\n");
+		exit(SUCCESS);
+	}
 	if (sigaction(SIGUSR2, &client_action, NULL))
+	{
 		ft_printf("Failed to use sigaction on signal SIGUSR2.\n");
+		exit(SUCCESS);
+	}
 	send_bit(client.pid, client.message);
 	while (1)
 		pause();
