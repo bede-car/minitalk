@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:33 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 09:17:17 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 09:38:00 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	signal_receiver(int signal, siginfo_t *info, void *ucontext)
 	{
 		if (!character)
 		{
-			ft_printf("\nmessage was recived\n");
+			ft_printf("\nmessage was received\n");
 			kill(info->si_pid, SIGUSR2);
 		}
 		else
