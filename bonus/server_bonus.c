@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:33 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 08:02:16 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 08:20:34 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 void	input_server_validation(int argc, char **argv)
 {
@@ -29,10 +29,13 @@ void	signal_receiver(int signal, siginfo_t *info, void *ucontext)
 	(void)ucontext;
 	if (signal == SIGUSR1)
 		character = character + (1 << shift);
-	if (shift == 6)
+	if (shift == 7)
 	{
 		if (!character)
+		{
+			ft_printf("\nmessage was recived\n");
 			kill(info->si_pid, SIGUSR2);
+		}
 		else
 			write(1, &character, 1);
 		shift = 0;

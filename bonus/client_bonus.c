@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:31 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 08:00:10 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 08:20:44 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 void	input_client_validation(int argc, char **argv, t_data *client)
 {
@@ -18,7 +18,7 @@ void	input_client_validation(int argc, char **argv, t_data *client)
 	if (argc != 3 || client->pid <= 0)
 	{
 		ft_printf("\n>> Invalid parameters, Try again! <<\n\n");
-		ft_printf("Example of usage: ./client PID message\n");
+		ft_printf("Example of usage: ./client_bonus PID message\n");
 		ft_printf("[1]For PID, type the exacly number of the target server\n");
 		ft_printf("[2]For the message, if it has more than 1 word,");
 		ft_printf(" type inside parentheses ");
@@ -43,7 +43,7 @@ void	send_bit(int pid, char *message)
 		kill(backup_pid, SIGUSR1);
 	else
 		kill(backup_pid, SIGUSR2);
-	if (bit == 7)
+	if (bit == 8)
 	{
 		bit = 0;
 		index++;
@@ -56,7 +56,10 @@ void	signal_sender(int signal, siginfo_t *info, void *ucontext)
 	if (signal == SIGUSR1)
 		send_bit(info->si_pid, (char*)ucontext);
 	else
+	{
+	ft_printf("message was sent\n"); 
 		exit(SUCCESS);
+	}
 }
 
 int	main(int argc, char **argv)
