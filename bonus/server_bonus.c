@@ -6,7 +6,7 @@
 /*   By: bede-car <bede-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:01:33 by bede-car          #+#    #+#             */
-/*   Updated: 2023/03/06 08:20:34 by bede-car         ###   ########.fr       */
+/*   Updated: 2023/03/06 08:44:18 by bede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	input_server_validation(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 }
+
 void	signal_receiver(int signal, siginfo_t *info, void *ucontext)
 {
 	static char	character;
 	static int	shift;
-	
+
 	(void)ucontext;
 	if (signal == SIGUSR1)
 		character = character + (1 << shift);
@@ -40,7 +41,7 @@ void	signal_receiver(int signal, siginfo_t *info, void *ucontext)
 			write(1, &character, 1);
 		shift = 0;
 		character = 0;
-		kill(info->si_pid, SIGUSR1);		
+		kill(info->si_pid, SIGUSR1);
 		return ;
 	}
 	shift++;
@@ -53,8 +54,8 @@ int	main(int argc, char **argv)
 	struct sigaction	server_action;
 
 	sigemptyset(&server_action.sa_mask);
-    server_action.sa_flags = SA_SIGINFO;
-    server_action.sa_sigaction = signal_receiver;
+	server_action.sa_flags = SA_SIGINFO;
+	server_action.sa_sigaction = signal_receiver;
 	input_server_validation(argc, argv);
 	server.pid = getpid();
 	ft_printf("\n>> Ok let's talk! <<\n");
